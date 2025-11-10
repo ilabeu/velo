@@ -6,6 +6,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(value = Module.class, remap = false)
-public interface ModuleAccessor.java {
+public interface ModuleAccessor {
     @Accessor("settings") Settings example$getSettings();
 }
