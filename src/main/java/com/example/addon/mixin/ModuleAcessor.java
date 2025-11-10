@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(value = Module.class, remap = false)
 public interface ModuleAccessor {
-    @Accessor("settings") Settings randomhax$getSettings();
+    @Accessor("settings") Settings example$getSettings();
 }
