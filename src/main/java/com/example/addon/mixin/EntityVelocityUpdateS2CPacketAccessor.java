@@ -2,28 +2,25 @@ package com.example.addon.mixin;
 
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Accessor;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import com.example.addon.mixin.EntityVelocityUpdateS2CPacketAccessor;
 
 @Mixin(EntityVelocityUpdateS2CPacket.class)
-public interface EntityVelocityUpdateS2CPacketAccessor {
+public class VelocityMixin {
 
-    // Setters — para modificar os valores da velocidade
-    @Accessor("velocityX")
-    void setVelocityX(int x);
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void modifyVelocity(EntityVelocityUpdateS2CPacket packet, CallbackInfo ci) {
+        // Supondo que h e v são multiplicadores definidos em algum lugar do módulo
+        double h = 1.0; // exemplo, substitua pelo seu valor real
+        double v = 1.0; // exemplo, substitua pelo seu valor real
 
-    @Accessor("velocityY")
-    void setVelocityY(int y);
+        // Cast para Accessor para poder usar getters e setters
+        EntityVelocityUpdateS2CPacketAccessor accessor = (EntityVelocityUpdateS2CPacketAccessor) packet;
 
-    @Accessor("velocityZ")
-    void setVelocityZ(int z);
-
-    // Getters — para ler os valores da velocidade
-    @Accessor("velocityX")
-    int getVelocityX();
-
-    @Accessor("velocityY")
-    int getVelocityY();
-
-    @Accessor("velocityZ")
-    int getVelocityZ();
+        accessor.setVelocityX((int) Math.round(accessor.getVelocityX() * h));
+        accessor.setVelocityY((int) Math.round(accessor.getVelocityY() * v));
+        accessor.setVelocityZ((int) Math.round(accessor.getVelocityZ() * h));
+    }
 }
