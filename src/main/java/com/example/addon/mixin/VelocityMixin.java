@@ -1,7 +1,7 @@
 package com.example.addon.mixin;
 
-import com.randomhax.addon.mixin.EntityVelocityUpdateS2CPacketAccessor;
-import com.randomhax.addon.mixin.ModuleAccessor;
+import com.example.addon.mixin.EntityVelocityUpdateS2CPacketAccessor;
+import com.example.addon.mixin.ModuleAccessor;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.DoubleSetting;
@@ -48,7 +48,7 @@ public abstract class VelocityMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void rh$onInit(CallbackInfo ci) {
-        Settings s = ((ModuleAccessor) this).randomhax$getSettings();
+        Settings s = ((ModuleAccessor) this).example$getSettings();
 
         rh$extra = s.createGroup("Velocity+");
 
