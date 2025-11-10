@@ -9,4 +9,8 @@ public interface EntityVelocityUpdateS2CPacketAccessor {
     @Accessor("velocityX") void setVelocityX(int x);
     @Accessor("velocityY") void setVelocityY(int y);
     @Accessor("velocityZ") void setVelocityZ(int z);
+
+    @Accessor("velocityX") int getVelocityX();     // ✅ ADICIONE
+    @Accessor("velocityY") int getVelocityY();     // ✅ ADICIONE
+    @Accessor("velocityZ") int getVelocityZ();     // ✅ ADICIONE
 }
